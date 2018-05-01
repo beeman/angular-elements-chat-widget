@@ -1,5 +1,5 @@
 {
-  "name": "firebase-chat-widget",
+  "name": "angular-elements-chat-widget",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -16,13 +16,18 @@
     "@angular/common": "^6.0.0-rc.5",
     "@angular/compiler": "^6.0.0-rc.5",
     "@angular/core": "^6.0.0-rc.5",
+    "@angular/elements": "^6.0.0-rc.5",
     "@angular/forms": "^6.0.0-rc.5",
     "@angular/http": "^6.0.0-rc.5",
     "@angular/platform-browser": "^6.0.0-rc.5",
     "@angular/platform-browser-dynamic": "^6.0.0-rc.5",
     "@angular/router": "^6.0.0-rc.5",
+    "@webcomponents/custom-elements": "^1.1.0",
+    "concat": "^1.0.3",
     "core-js": "^2.5.4",
+    "fs-extra": "^5.0.0",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.0.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

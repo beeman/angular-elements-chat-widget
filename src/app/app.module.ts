@@ -1,18 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { Injector, NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { createCustomElement } from '@angular/elements'
+import { ChatWidgetComponent } from './chat-widget/chat-widget.component'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule],
+  declarations: [ChatWidgetComponent],
+  entryComponents: [ChatWidgetComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {}
+
+  ngDoBootstrap() {
+    const el = createCustomElement(ChatWidgetComponent, {
+      injector: this.injector,
+    })
+    customElements.define('chat-widget', el)
+  }
+}
