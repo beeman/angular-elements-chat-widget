@@ -25,6 +25,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
     .btn-active {
       border: 1px solid #a0a0a0;
     }
+    .btn:focus {
+      border: 1px solid #333;
+    }
   `],
 })
 export class ChatConfigComponent {
