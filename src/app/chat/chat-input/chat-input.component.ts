@@ -4,7 +4,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, 
   selector: 'chat-input',
   template: `
     <textarea type="text" class="chat-input-text" placeholder="Type message..."
-              #message (keydown.enter)="onSubmit()" (keyup.enter)="message.value = ''"></textarea>
+              #message (keydown.enter)="onSubmit()" (keyup.enter)="message.value = ''" (keyup.escape)="dismiss.emit()"></textarea>
     <button type="submit" class="chat-input-submit" (click)="onSubmit()">
       {{buttonText}}
     </button>
@@ -16,6 +16,7 @@ export class ChatInputComponent implements OnInit {
   @Input() public buttonText = '↩︎'
   @Input() public focus = new EventEmitter()
   @Output() public send = new EventEmitter()
+  @Output() public dismiss = new EventEmitter()
   @ViewChild('message') message: ElementRef
 
   ngOnInit() {

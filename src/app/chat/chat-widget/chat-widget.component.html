@@ -1,5 +1,5 @@
 <div class="wrapper {{theme}}">
-  <div class="chat-box" *ngIf="chatVisible" [@fadeInOut]="chatVisible">
+  <div class="chat-box" *ngIf="visible" [@fadeInOut]="visible">
     <div class="chat-box-header">
       <div class="">
         <div class="operator-status">
@@ -32,11 +32,11 @@
       </ng-container>
     </div>
     <div class="chat-box-footer">
-      <chat-input (send)="sendMessage($event)" [focus]="focus"></chat-input>
+      <chat-input (send)="sendMessage($event)" (dismiss)="toggleChat()" [focus]="focus"></chat-input>
     </div>
   </div>
   <button class="chat-button" (click)="toggleChat()">
-    <span *ngIf="chatVisible">✕</span>
-    <span *ngIf="!chatVisible">?</span>
+    <span *ngIf="visible">✕</span>
+    <span *ngIf="!visible">?</span>
   </button>
 </div>

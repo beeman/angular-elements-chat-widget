@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { fadeIn, fadeInOut } from '../animations'
 
@@ -29,17 +29,33 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
   animations: [fadeInOut, fadeIn],
 })
 export class ChatWidgetComponent implements OnInit {
-  @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
   @ViewChild('bottom') bottom: ElementRef
+  @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
+
+  public _visible = false
+
+  public get visible() {
+    return this._visible
+  }
+
+  @Input() public set visible(visible) {
+    this._visible = visible
+    if (this._visible) {
+      setTimeout(() => {
+        this.scrollToBottom()
+        this.focusMessage()
+      }, 0)
+    }
+  }
 
   public focus = new Subject()
-  public chatVisible = false
 
   public operator = {
     name: 'Operator',
     status: 'online',
     avatar: `https://randomuser.me/api/portraits/women/${rand(100)}.jpg`,
   }
+
   public client = {
     name: 'Guest User',
     status: 'online',
@@ -56,7 +72,6 @@ export class ChatWidgetComponent implements OnInit {
       date: new Date().getTime(),
     })
     this.scrollToBottom()
-    this.focusMessage()
   }
 
   public scrollToBottom() {
@@ -74,20 +89,14 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => this.visible = true, 1000)
     setTimeout(() => {
       this.addMessage(this.operator, 'Hi, how can we help you?', 'received')
-      this.toggleChat()
-    }, 1000)
+    }, 1500)
   }
 
   public toggleChat() {
-    this.chatVisible = !this.chatVisible
-    if (this.chatVisible) {
-      setTimeout(() => {
-        this.scrollToBottom()
-        this.focusMessage()
-      }, 100)
-    }
+    this.visible = !this.visible
   }
 
   public sendMessage({ message }) {
@@ -97,4 +106,15 @@ export class ChatWidgetComponent implements OnInit {
     this.addMessage(this.client, message, 'sent')
     setTimeout(() => this.randomMessage(), 1000)
   }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === '/') {
+      this.focusMessage()
+    }
+    if (event.key === '?' && !this._visible) {
+      this.toggleChat()
+    }
+  }
+
 }
