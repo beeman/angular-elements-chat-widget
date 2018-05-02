@@ -5,6 +5,7 @@
         <div class="operator-status">
           {{operator.status}}
           <span class="operator-status-online">●</span>
+          <button class="chat-button-header" (click)="toggleChat()">✕</button>
         </div>
         <chat-avatar [image]="operator.avatar"></chat-avatar>
         <h3 class="operator-name">

@@ -6,13 +6,14 @@
 
 .wrapper {
   position: absolute;
-  right: 0;
+  top: 0;
   bottom: 0;
   height: 100vh;
-  width: 300px;
+  width: 100vw;
 }
 
 .chat-button {
+  z-index: 1;
   width: 60px;
   height: 60px;
   position: absolute;
@@ -25,19 +26,31 @@
   color: #fff;
   font-size: 32px;
 }
+.chat-button-header {
+  z-index: 1;
+  font-weight: bold;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: inherit;
+  padding: 5px 9px;
+  margin-left: 5px;
+}
 
 .chat-box {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
   margin: 0;
-  height: 80vh;
+
   display: flex;
   flex-direction: column;
-  width: 300px;
-  position: absolute;
-  bottom: 100px;
-  right: 40px;
+
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
   background: #1976d2;
-  border-radius: 10px;
 }
 .chat-box-hidden {
   display: none;
@@ -58,6 +71,7 @@
 
 .chat-box-footer {
   color: #fff;
+  height: 50px;
 }
 
 .operator-name {
@@ -206,4 +220,49 @@ Sent message style
 }
 .red .chat-box {
   background: #DD0031;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .wrapper {
+    top: auto;
+    right: 0;
+    width: 300px;
+  }
+  .chat-button {
+    display: block;
+  }
+  .chat-button-header {
+    display: none;
+  }
+  .chat-box {
+    top: auto;
+    left: auto;
+    bottom: 100px;
+    right: 40px;
+    height: 60vh;
+    width: 300px;
+    border-radius: 10px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .chat-box {
+    height: 70vh;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .chat-box {
+    height: 80vh;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .chat-box {
+    /*height: 80vh;*/
+  }
 }
