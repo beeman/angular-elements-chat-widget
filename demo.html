@@ -47,8 +47,14 @@
       Licensed
     </a>
   </h3>
+  <chat-config id="config"></chat-config>
 </div>
-<chat-widget></chat-widget>
+<chat-widget id="widget"></chat-widget>
 <script src="./chat-widget.js"></script>
+<script>
+  const config = document.getElementById('config')
+  const widget = document.getElementById('widget')
+  config.addEventListener('themeChange', (evt) => widget.theme = evt.detail)
+</script>
 </body>
 </html>

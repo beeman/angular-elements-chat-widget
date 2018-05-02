@@ -1,19 +1,17 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
+import { Subject } from 'rxjs'
 
 const randomMessages = [
   'Nice to meet you',
   'How are you?',
   'Not too bad, thanks',
-  'I\'m afraid I can\'t just leave that out... :(',
   'What do you do?',
   'Is there anything else I can help you with?',
   'That\'s awesome',
-  'Hi, how can we help you?',
-  'Why do you think that?',
   'Angular Elements is the bomb 💣 ',
-  'Can you explain?',
+  'Can you explain in more detail?',
   'Anyway I\'ve gotta go now',
-  'It was a pleasure chat with you',
+  'It was a pleasure to chat with you',
   'We are happy to make you a custom offer!',
   'Bye',
   ':)',
@@ -30,10 +28,9 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
 })
 export class ChatWidgetComponent implements OnInit {
   @Input() public theme: 'blue'|'grey'|'red' = 'blue'
-
-  @ViewChild('message') message: ElementRef
   @ViewChild('bottom') bottom: ElementRef
 
+  public focus = new Subject()
   public chatVisible = false
 
   public operator = {
@@ -65,15 +62,7 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   public focusMessage() {
-    this.message.nativeElement.focus()
-  }
-
-  public getMessage() {
-    return this.message.nativeElement.value
-  }
-
-  public clearMessage() {
-    this.message.nativeElement.value = ''
+    this.focus.next(true)
   }
 
   public randomMessage() {
@@ -94,13 +83,11 @@ export class ChatWidgetComponent implements OnInit {
     }
   }
 
-  public onSubmit() {
-    const message = this.getMessage()
+  public sendMessage({ message }) {
     if (message.trim() === '') {
       return
     }
     this.addMessage(this.client, message, 'sent')
-    this.clearMessage()
     setTimeout(() => this.randomMessage(), 1000)
   }
 

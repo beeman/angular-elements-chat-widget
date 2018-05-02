@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { Injector, NgModule } from '@angular/core'
 
 import { createCustomElement } from '@angular/elements'
-import { ChatModule, ChatWidgetComponent } from './chat/'
+import { ChatModule, ChatWidgetComponent, ChatConfigComponent } from './chat/'
 
 @NgModule({
   imports: [BrowserModule, ChatModule],
@@ -13,9 +13,13 @@ export class ElementModule {
   }
 
   ngDoBootstrap() {
-    const el = <any>createCustomElement(ChatWidgetComponent, {
+    const chatConfig = <any>createCustomElement(ChatConfigComponent, {
       injector: this.injector,
     })
-    customElements.define('chat-widget', el)
+    const chatWidget = <any>createCustomElement(ChatWidgetComponent, {
+      injector: this.injector,
+    })
+    customElements.define('chat-config', chatConfig)
+    customElements.define('chat-widget', chatWidget)
   }
 }
