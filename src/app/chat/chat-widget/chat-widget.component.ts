@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
+import { fadeIn, fadeInOut } from '../animations'
 
 const randomMessages = [
   'Nice to meet you',
@@ -17,7 +18,7 @@ const randomMessages = [
   ':)',
 ]
 
-const rand = (max) => Math.floor(Math.random() * max)
+const rand = max => Math.floor(Math.random() * max)
 
 const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
 
@@ -25,9 +26,10 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
   selector: 'chat-widget',
   templateUrl: './chat-widget.component.html',
   styleUrls: ['./chat-widget.component.css'],
+  animations: [fadeInOut, fadeIn],
 })
 export class ChatWidgetComponent implements OnInit {
-  @Input() public theme: 'blue'|'grey'|'red' = 'blue'
+  @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
   @ViewChild('bottom') bottom: ElementRef
 
   public focus = new Subject()
@@ -58,7 +60,9 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   public scrollToBottom() {
-    this.bottom.nativeElement.scrollIntoView()
+    if (this.bottom !== undefined) {
+      this.bottom.nativeElement.scrollIntoView()
+    }
   }
 
   public focusMessage() {
@@ -70,16 +74,19 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.addMessage(this.operator, 'Hi, how can we help you?', 'received')
-    this.focusMessage()
-    this.scrollToBottom()
-    setTimeout(() => this.toggleChat(), 1000)
+    setTimeout(() => {
+      this.addMessage(this.operator, 'Hi, how can we help you?', 'received')
+      this.toggleChat()
+    }, 1000)
   }
 
   public toggleChat() {
     this.chatVisible = !this.chatVisible
     if (this.chatVisible) {
-      setTimeout(() => this.focusMessage(), 500)
+      setTimeout(() => {
+        this.scrollToBottom()
+        this.focusMessage()
+      }, 100)
     }
   }
 
@@ -90,5 +97,4 @@ export class ChatWidgetComponent implements OnInit {
     this.addMessage(this.client, message, 'sent')
     setTimeout(() => this.randomMessage(), 1000)
   }
-
 }
