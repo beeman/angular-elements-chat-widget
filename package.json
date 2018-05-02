@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "build:elements": "ng build --prod --main src/main.element.ts --output-path dist/element-build --polyfills src/polyfills.element.ts --output-hashing none",
+    "build:elements": "ng build elements --prod",
     "postbuild:elements": "node ./build-elements.js",
     "test": "ng test",
     "lint": "ng lint",

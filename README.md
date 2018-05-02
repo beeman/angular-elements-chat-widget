@@ -21,8 +21,9 @@ The component can be developed as any other Angular component: run `ng serve` an
 
 ## Build
 
-To build the Angular Elements, there is a special npm run-script: `npm run build:elements`. This scripts invokes `ng build` with a couple of parameters
-so it creates a build in `dist/element-build` that only contains `ElementModule`. 
+The build configuration of the Angular Elements is defined in a separate project in `angular.json`. 
+
+You can run this configuration with `npm run build:elements`. It creates a build in `dist/elements-build` that only contains `ElementModule`. 
 
 After this build the `./build-elements.js` script creates the final js file and
 demo project in `dist/elements`.
