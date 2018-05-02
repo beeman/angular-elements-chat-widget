@@ -22,6 +22,7 @@
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
   background: #1976d2;
   border-radius: 50%;
+  border: none;
   outline: none;
   color: #fff;
   font-size: 32px;
@@ -34,6 +35,10 @@
   background-color: inherit;
   padding: 5px 9px;
   margin-left: 5px;
+}
+
+.chat-button:focus {
+  border: 2px solid white;
 }
 
 .chat-box {
