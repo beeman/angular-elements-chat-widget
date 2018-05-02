@@ -21,7 +21,7 @@
   background: #1976d2;
   border-radius: 50%;
   outline: none;
-  color: white;
+  color: #fff;
   font-size: 32px;
 }
 
@@ -43,7 +43,7 @@
 }
 .chat-box-header {
   padding: 10px;
-  color: white;
+  color: #fff;
 }
 
 .chat-box-main {
@@ -56,7 +56,7 @@
 }
 
 .chat-box-footer {
-  color: white;
+  color: #fff;
 }
 
 .operator-name {
@@ -152,7 +152,6 @@ Sent message style
  */
 .chat-message-sent {
   align-self: flex-end;
-  padding-right: 30px;
 }
 
 .chat-message-sent .chat-message-from {
@@ -224,3 +223,24 @@ Input elements
   outline: none;
 }
 
+
+.blue .chat-button {
+  background: #1976d2;
+}
+.blue .chat-box {
+  background: #1976d2;
+}
+
+.grey .chat-button {
+  background: #454549;
+}
+.grey .chat-box {
+  background: #454549;
+}
+
+.red .chat-button {
+  background: #DD0031;
+}
+.red .chat-box {
+  background: #DD0031;
+}

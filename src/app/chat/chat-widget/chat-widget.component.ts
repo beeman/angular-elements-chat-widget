@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
 
 const randomMessages = [
   'Nice to meet you',
@@ -24,11 +24,13 @@ const rand = (max) => Math.floor(Math.random() * max)
 const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
 
 @Component({
-  selector: 'app-chat-widget',
+  selector: 'chat-widget',
   templateUrl: './chat-widget.component.html',
   styleUrls: ['./chat-widget.component.css'],
 })
 export class ChatWidgetComponent implements OnInit {
+  @Input() public theme: 'blue'|'grey'|'red' = 'blue'
+
   @ViewChild('message') message: ElementRef
   @ViewChild('bottom') bottom: ElementRef
 

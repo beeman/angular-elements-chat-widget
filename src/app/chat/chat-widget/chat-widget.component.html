@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper {{theme}}">
   <div class="chat-box" [class.chat-box-hidden]="!chatVisible">
     <div class="chat-box-header">
       <div class="">
@@ -6,7 +6,7 @@
           {{operator.status}}
           <span class="operator-status-online">●</span>
         </div>
-        <img src="{{operator.avatar}}" class="operator-avatar" alt="">
+        <chat-avatar [image]="operator.avatar"></chat-avatar>
         <h3 class="operator-name">
           {{operator.name}}
         </h3>
@@ -18,7 +18,7 @@
         <div class="chat-message" [class.chat-message-received]="message.type === 'received'"
              [class.chat-message-sent]="message.type === 'sent'">
           <div >
-            <img src="{{message.from.avatar}}" class="chat-message-from-avatar" alt="">
+            <chat-avatar [image]="message.from.avatar" class="chat-message-from-avatar"></chat-avatar>
             <div class="chat-message-text">
               {{message.text}}
             </div>
