@@ -1,27 +1,28 @@
 # Chat Widget built with Angular Elements
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.7.
+Angular Elements allows you to create Custom Elements (from the WebComponents spec) from Angular Components.
 
-## Development server
+This means that those components can be used outside of an Angular app!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Project Structure
 
-## Code scaffolding
+The project is a standard Angular 6 project with a few additions:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+src/app/element.module.ts   Module with the component to be used as Angular Element. Imported by App Module
+src/main.element.ts         bootstrap the Element Module
+src/polyfills.element.ts    polyfills for the Element Module
+build-elements.js           script to generate the exported file and demo project
+```
+
+### Development
+
+The component can be developed as any other Angular component: run `ng serve` and navigate to `http://localhost:4200/`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+To build the Angular Elements, there is a special npm run-script: `npm run build:elements`. This scripts invokes `ng build` with a couple of parameters
+so it creates a build in `dist/element-build` that only contains `ElementModule`. 
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+After this build the `./build-elements.js` script creates the final js file and
+demo project in `dist/elements`.
