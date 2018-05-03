@@ -36,7 +36,7 @@
     </div>
   </div>
   <button class="chat-button" (click)="toggleChat()">
-    <span *ngIf="visible">✕</span>
-    <span *ngIf="!visible">?</span>
+    <span [@fadeIn] *ngIf="visible">✕</span>
+    <span [@fadeIn] *ngIf="!visible">?</span>
   </button>
 </div>
