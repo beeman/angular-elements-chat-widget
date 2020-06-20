@@ -5,7 +5,9 @@
     "types": []
   },
   "files": [
+    "main.ts",
     "main.element.ts",
+    "polyfills.ts",
     "polyfills.element.ts"
   ],
   "include": [
