@@ -16,7 +16,7 @@
             "index": "src/index.html",
             "main": "src/main.element.ts",
             "polyfills": "src/polyfills.element.ts",
-            "tsConfig": "src/tsconfig.app.json"
+            "tsConfig": "src/tsconfig.element.json"
           },
           "configurations": {
             "production": {
