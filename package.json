@@ -7,7 +7,7 @@
     "start": "ng serve --port 4202",
     "build": "ng build --prod",
     "build:elements": "ng build elements --prod",
-    "postbuild:elements": "node ./build-elements.js",
+    "postbuild:elements": "node ./build-elements.js es2015",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
