@@ -30,7 +30,7 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
   animations: [fadeInOut, fadeIn],
 })
 export class ChatWidgetComponent implements OnInit {
-  @ViewChild('bottom', { static: false }) bottom: ElementRef
+  @ViewChild('bottom') bottom: ElementRef
   @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
 
   public _visible = false
