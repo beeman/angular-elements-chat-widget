@@ -6,7 +6,7 @@ This means that those components can be used outside of an Angular app!
 
 ## Project Structure
 
-The project is a standard Angular 9 project with a few additions:
+The project is a standard Angular 10 project with a few additions:
 
 ```
 src/app/element.module.ts   Module with the component to be used as Angular Element. Imported by App Module
