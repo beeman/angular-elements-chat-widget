@@ -4,13 +4,13 @@ import { fadeIn, fadeInOut } from '../animations'
 
 const randomMessages = [
   'Nice to meet you',
-  'We now support Angular 9!',
+  'We now support Angular 10!',
   'How are you?',
   'Not too bad, thanks',
   'What do you do?',
   'Is there anything else I can help you with?',
   'That\'s awesome',
-  'Angular 9 Elements is the bomb 💣 ',
+  'Angular 10 Elements is the bomb 💣 ',
   'Can you explain in more detail?',
   'Anyway I\'ve gotta go now',
   'It was a pleasure to chat with you',
