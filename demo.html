@@ -1,60 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Chat Widget with Angular Elements</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-    body, html {
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden
-    }
-    body {
-      font-family: 'Open Sans', sans-serif
-    }
-    .container {
-      padding: 20px;
-    }
-    #logo {
-      width: 100px;
-      margin: 10px;
-      float: left;
-    }
-    a {
-      color: #1976d2;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-<div class="container">
-  <img id="logo" src="./angular-elements-logo.png" alt="Angular Elements Logo">
-  <h2>
-    This Chat Widget is brought to you by Angular Elements!
-  </h2>
-  <h3>
-    By
-    <a href="https://twitter.com/beeman_nl">
-      @beeman_nl
-    </a>
-    -
-    <a href="https://github.com/beeman/angular-elements-chat-widget">
-      MIT
-      Licensed
-    </a>
-  </h3>
-  <chat-config id="config"></chat-config>
-</div>
-<chat-widget id="widget"></chat-widget>
-<script src="./chat-widget.js"></script>
-<script>
-  const config = document.getElementById('config')
-  const widget = document.getElementById('widget')
-  config.addEventListener('themeChange', (evt) => widget.theme = evt.detail)
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chat Widget with Angular Elements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+          'Segoe UI Emoji', 'Segoe UI Symbol';
+      }
+      .container {
+        padding: 20px;
+      }
+      #logo {
+        width: 100px;
+        margin: 10px;
+        float: left;
+      }
+      a {
+        color: #1976d2;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        id="logo"
+        src="./angular-elements-logo.png"
+        alt="Angular Elements Logo"
+      />
+      <h2>
+        This Chat Widget is brought to you by Angular Elements!
+      </h2>
+      <h3>
+        By
+        <a href="https://twitter.com/beeman_nl">
+          @beeman_nl
+        </a>
+        -
+        <a href="https://github.com/beeman/angular-elements-chat-widget">
+          MIT Licensed
+        </a>
+      </h3>
+      <chat-config id="config"></chat-config>
+    </div>
+    <chat-widget id="widget"></chat-widget>
+    <script src="./chat-widget.js"></script>
+    <script>
+      const config = document.getElementById('config')
+      const widget = document.getElementById('widget')
+      config.addEventListener(
+        'themeChange',
+        (evt) => (widget.theme = evt.detail),
+      )
+    </script>
+  </body>
 </html>
