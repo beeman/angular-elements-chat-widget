@@ -6,7 +6,7 @@ This means that those components can be used outside of an Angular app!
 
 ## Project Structure
 
-The project is a standard Angular 6 project with a few additions:
+The project is a standard Angular 10 project with a few additions:
 
 ```
 src/app/element.module.ts   Module with the component to be used as Angular Element. Imported by App Module
@@ -27,3 +27,5 @@ You can run this configuration with `npm run build:elements`. It creates a build
 
 After this build the `./build-elements.js` script creates the final js file and
 demo project in `dist/elements`.
+
+To change the target of the compiled js file to either `es5` or `es2015`, update the `"postbuild:elements"` script in `package.json`. Default it creates an `es2015` file.

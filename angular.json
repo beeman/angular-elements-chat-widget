@@ -11,14 +11,21 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/elements-build",
             "index": "src/index.html",
             "main": "src/main.element.ts",
             "polyfills": "src/polyfills.element.ts",
-            "tsConfig": "src/tsconfig.app.json"
+            "tsConfig": "src/tsconfig.element.json"
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "none",
               "sourceMap": false,
@@ -43,6 +50,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/chat-widget",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -67,6 +75,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

@@ -1,12 +1,16 @@
 const fs = require('fs-extra');
 const concat = require('concat');
 
+const target = process.argv.slice(2) || 'es2015';
+
 (async function build() {
 
-  const files =[
-    './dist/elements-build/polyfills.js',
-    './dist/elements-build/runtime.js',
-    './dist/elements-build/main.js'
+  console.info(`Building elements for ${target}...`);
+
+  const files = [
+    `./dist/elements-build/polyfills-${target}.js`,
+    `./dist/elements-build/runtime-${target}.js`,
+    `./dist/elements-build/main-${target}.js`
   ]
 
   await fs.ensureDir('./dist/elements')
